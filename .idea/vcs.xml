@@ -2,7 +2,6 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
-    <mapping directory="$USER_HOME$/Music/Work/personal/codemon/weather_codemon" vcs="Git" />
-    <mapping directory="$USER_HOME$/Music/Work/personal/codemon/weather_codemon/reactWeatherApp" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
   </component>
 </project>
