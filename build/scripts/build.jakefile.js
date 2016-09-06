@@ -2,6 +2,8 @@
     "use strict";
 
     var version = require("../util/version_checker.js");
+    var jshint = require("simplebuild-jshint");
+    var jshintConfig = require("../config/jshint.config.js");
 
     desc("Lint and Test");
     var startTime = Date.now();
@@ -14,18 +16,24 @@
 
 
     //**LINT
-    
+
     desc("Lint everyThing");
     task("lint",["lintNode","lintClient"]);
 
     desc("Lint Node");
     task("lintNode",function(){
-        console.log("Linting node ..");
-    });
+        process.stdout.write("Linting node .");
+        jshint.checkFiles(
+            {
+                files : ["build/**/*.js"],
+                options: jshintConfig.nodeOptions,
+                globals : jshintConfig.nodeGlobals
+            },complete,fail);
+    },{async: true});
 
     desc("Lint Client");
     task("lintClient",function(){
-        console.log("Linting client ..");
+        process.stdout.write("Linting client ..");
     });
 
 
