@@ -1,6 +1,8 @@
 {
-  "name" : "weather",
-  "version" : "1.0.0",
-  "private" : true
-
+  "name": "weather",
+  "version": "1.0.0",
+  "private": true,
+  "devDependencies": {
+    "jake": "^8.0.12"
+  }
 }
