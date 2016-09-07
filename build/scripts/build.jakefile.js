@@ -11,7 +11,7 @@
     var startTime = Date.now();
     task("default",["version","lint","build"],function(){
         var elapsedSeconds = (Date.now() - startTime)/1000;
-        console.log("\n\n Build ok ("+ elapsedSeconds.toFixed(2) + "s)");
+        console.log("\n\nBuild ok ("+ elapsedSeconds.toFixed(2) + "s)");
     });
 
 
