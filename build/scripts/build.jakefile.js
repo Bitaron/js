@@ -29,12 +29,18 @@
                 options: jshintConfig.nodeOptions,
                 globals : jshintConfig.nodeGlobals
             },complete,fail);
-    },{async: true});
+    },{async : true});
 
     desc("Lint Client");
     task("lintClient",function(){
         process.stdout.write("Linting client ..");
-    });
+        jshint.checkFiles(
+            {
+                files : ["src/*.js"],
+                options : jshintConfig.clientOptions,
+                globals : jshintConfig.clientGlobals
+            },complete,fail);
+    },{async : true});
 
 
 
