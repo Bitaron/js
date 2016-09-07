@@ -4,14 +4,16 @@
 var fs = require("fs");
 var path = require("path");
 var browserify = require("browserify");
+var babelify = require("babelify");
+var react = require("babel-preset-react");
 
 exports.bundle = function(config, success, failure) {
-	var b = browserify(config.options);
+    browserify(config.options)
+        .transform('reactify')
+        .require(config.entry, { entry: true })
+        .bundle()
+        .on("error",function(err){return failure(err)})
+        .pipe(fs.createWriteStream(config.outfile))
+    success();
 
-	b.add(path.resolve(config.entry));
-	b.bundle(function(err, bundle) {
-		if (err) return failure(err);
-		fs.writeFileSync(config.outfile, bundle);
-		return success();
-	});
 };

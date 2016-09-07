@@ -82,6 +82,7 @@
             entry: paths.clientEntryPoint,
             outfile: paths.clientDistBundle,
             options: {
+                standalone: "example",
                 debug: true
             }
         }, complete, fail);
