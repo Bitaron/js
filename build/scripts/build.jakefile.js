@@ -20,7 +20,7 @@
 
     desc("Check node version");
     task("version",function(){
-        console.log("\n\n\n Check node version");
+        console.log("\n\n\nCheck node version ..");
         version.check({
             name: "Node",
             expected: require("../../package.json").engines.node,
@@ -70,7 +70,7 @@
     });
 
     task("buildClient",[paths.distDir],function(){
-        console.log("Copying client code: .");
+        console.log("Copying client code ..");
         shell.cp(paths.clientDir + "/*.html", paths.distDir);
     });
 
