@@ -3,7 +3,9 @@
 
     module.exports = {
         distDir : "generated/dist",
-        clientDir : "src/"
+        clientDir : "src/",
+        clientEntryPoint : "src/app.js",
+        clientDistBundle : "generated/dist/bundle.js"
     };
 
 }());

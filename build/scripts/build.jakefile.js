@@ -6,6 +6,7 @@
     var jshint = require("simplebuild-jshint");
     var jshintConfig = require("../config/jshint.config.js");
     var paths = require("../config/paths.js");
+    var browserify = require("../util/browserify_runner.js");
 
     desc("Lint and Test");
     var startTime = Date.now();
@@ -69,12 +70,22 @@
 
     });
 
-    task("buildClient",[paths.distDir],function(){
+    task("buildClient",[paths.distDir,"bundleClientJs"],function(){
         console.log("Copying client code ..");
         shell.cp(paths.clientDir + "/*.html", paths.distDir);
     });
 
 
+    task("bundleClientJs",[paths.distDir],function(){
+        console.log("Bundeling client Js with Browserify ..");
+        browserify.bundle({
+            entry: paths.clientEntryPoint,
+            outfile: paths.clientDistBundle,
+            options: {
+                debug: true
+            }
+        }, complete, fail);
+    }, { async: true });
 
     //** CREATE DIRECTORIES
     directory(paths.distDir);
