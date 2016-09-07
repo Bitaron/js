@@ -26,7 +26,8 @@
     });
 
     exports.clientOptions = merge(universalOptions, {
-        browser: true
+        browser: true,
+        node: true
     });
 
     var universalGlobals = {

@@ -1,10 +1,7 @@
 "use strict";
 
-var React = require('react');
-var ReactDOM = require('react-dom');
+var constant = require("./constants.js");
 
-
-
-module.exports = {
-    render : ReactDOM.render(<h1>Hello, world!</h1>, document.getElementById('example'))
+exports.test = function test(){
+    console.log("\n\n  It is " + constant.const + "\n\n");
 };
