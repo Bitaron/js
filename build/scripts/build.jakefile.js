@@ -7,10 +7,13 @@
     var jshintConfig = require("../config/jshint.config.js");
     var paths = require("../config/paths.js");
     var browserify = require("../util/browserify_runner.js");
+    var jasmineTestRunner = require("../util/jasmine_runner.js");
+    var jasmineConfig = require("../config/jasmine.conf");
+
 
     desc("Lint and Test");
     var startTime = Date.now();
-    task("default",["version","lint","build"],function(){
+    task("default",["version","lint","test","build"],function(){
         var elapsedSeconds = (Date.now() - startTime)/1000;
         console.log("\n\nBuild ok ("+ elapsedSeconds.toFixed(2) + "s)");
     });
@@ -60,6 +63,12 @@
     },{async : true});
 
 
+    //**TEST
+    desc("Test");
+    task("test",function(){
+        process.stdout.write("Testing client JS ..");
+        jasmineTestRunner.run(jasmineConfig,complete,fail);
+    },{async : true});
 
     //**BUILD
     desc("Build");

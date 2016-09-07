@@ -6,6 +6,7 @@
         clientDir : "src/",
         clientEntryPoint : "src/app.js",
         clientDistBundle : "generated/dist/bundle.js"
+
     };
 
 }());
