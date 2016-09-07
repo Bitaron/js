@@ -65,14 +65,18 @@
     task("build",["prepDistDir","buildClient"]);
 
     task("prepDistDir",function(){
-        process.stdout.write("Preparing dis dir .");
         shell.rm("-rf",paths.distDir);
 
     });
 
-    task("buildClient",function(){
-        console.log("Building client .");
+    task("buildClient",[paths.distDir],function(){
+        console.log("Copying client code: .");
+        shell.cp(paths.clientDir + "/*.html", paths.distDir);
     });
 
+
+
+    //** CREATE DIRECTORIES
+    directory(paths.distDir);
 
 }());
