@@ -1,9 +1,11 @@
 (function(){
     "use strict";
 
+    var shell = require("shelljs");
     var version = require("../util/version_checker.js");
     var jshint = require("simplebuild-jshint");
     var jshintConfig = require("../config/jshint.config.js");
+    var paths = require("../config/paths.js");
 
     desc("Lint and Test");
     var startTime = Date.now();
@@ -63,7 +65,8 @@
     task("build",["prepDistDir","buildClient"]);
 
     task("prepDistDir",function(){
-        console.log("Preparing dis dir .");
+        process.stdout.write("Preparing dis dir .");
+        shell.rm("-rf",paths.distDir);
 
     });
 
