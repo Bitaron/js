@@ -8,7 +8,7 @@ describe("A suite", function() {
     });
 
     it("works on client code", function() {
-        expect(app.test()).toBe(constant.const);
+        expect(app.test()).toBe(2);
     });
 });
 

@@ -1,7 +1,8 @@
 // Karma configuration
 // Generated on Wed Sep 07 2016 22:30:21 GMT+0600 (BDT)
-
+"use strict";
 module.exports = function(config) {
+
     config.set({
 
         // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -29,16 +30,12 @@ module.exports = function(config) {
         preprocessors: {
             'src/**/*.js' : [ 'browserify' ]
         },
-        browserify: {
-            debug: true,
-            transform: [ 'brfs' ]
-        },
 
 
         // test results reporter to use
         // possible values: 'dots', 'progress'
         // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-        reporters: ['progress'],
+        reporters: ['dots'],
 
 
         // web server port
@@ -70,5 +67,5 @@ module.exports = function(config) {
         // Concurrency level
         // how many browser should be started simultaneous
         concurrency: Infinity
-    })
-}
+    });
+};

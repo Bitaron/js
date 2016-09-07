@@ -81,19 +81,21 @@
         jasmineTestRunner.run(jasmineConfig,complete,fail);
     },{async : true});
 
-    desc("Test using Karma");
-    task("crossBrowserTest",["karma","testClient"]);
-
+    desc("Karma server. Run this first");
     task("karma", function() {
         karma.serve(paths.karmaConfigFile, complete, fail);
     }, { async: true });
+
+
+    desc("Test using Karma");
+    task("crossBrowserTest",["testClient"]);
 
     task("testClient", function() {
         console.log("Testing browser code: ");
         karma.runTests({
             configFile: paths.karmaConfigFile,
-            browsers: browsers,
-            strict: strict
+            browsers: [],
+            strict: true
         }, complete, fail);
     }, { async: true });
 
