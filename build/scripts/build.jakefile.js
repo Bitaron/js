@@ -20,7 +20,7 @@
 
     desc("Check node version");
     task("version",function(){
-        console.log("Check node version");
+        console.log("\n\n\n Check node version");
         version.check({
             name: "Node",
             expected: require("../../package.json").engines.node,
