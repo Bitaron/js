@@ -3,13 +3,19 @@
 
     var shell = require("shelljs");
     var version = require("../util/version_checker.js");
+
     var jshint = require("simplebuild-jshint");
     var jshintConfig = require("../config/jshint.config.js");
+
     var paths = require("../config/paths.js");
     var browserify = require("../util/browserify_runner.js");
+
     var jasmineTestRunner = require("../util/jasmine_runner.js");
     var jasmineConfig = require("../config/jasmine.conf");
 
+
+
+    //**DEFAULT
 
     desc("Lint and Test");
     var startTime = Date.now();
@@ -63,14 +69,20 @@
     },{async : true});
 
 
+
     //**TEST
+
     desc("Test");
     task("test",function(){
         process.stdout.write("Testing client JS ..");
         jasmineTestRunner.run(jasmineConfig,complete,fail);
     },{async : true});
 
+
+
+
     //**BUILD
+
     desc("Build");
     task("build",["prepDistDir","buildClient"]);
 
@@ -97,7 +109,10 @@
         }, complete, fail);
     }, { async: true });
 
+
+
     //** CREATE DIRECTORIES
+
     directory(paths.distDir);
 
 }());
