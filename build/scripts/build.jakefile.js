@@ -13,7 +13,7 @@
     var jasmineTestRunner = require("../util/jasmine_runner.js");
     var jasmineConfig = require("../config/jasmine.conf");
 
-
+    var karma = require("../util/karma_runner.js");
 
     //**DEFAULT
 
@@ -72,12 +72,30 @@
 
     //**TEST
 
-    desc("Test");
-    task("test",function(){
-        process.stdout.write("Testing client JS ..");
+    desc("Full Test");
+    task("test",["simpleTest","crossBrowserTest"]);
+
+    desc("Test on cmd");
+    task("simpleTest",function(){
+        process.stdout.write("Testing on cmd ..");
         jasmineTestRunner.run(jasmineConfig,complete,fail);
     },{async : true});
 
+    desc("Test using Karma");
+    task("crossBrowserTest",["karma","testClient"]);
+
+    task("karma", function() {
+        karma.serve(paths.karmaConfigFile, complete, fail);
+    }, { async: true });
+
+    task("testClient", function() {
+        console.log("Testing browser code: ");
+        karma.runTests({
+            configFile: paths.karmaConfigFile,
+            browsers: browsers,
+            strict: strict
+        }, complete, fail);
+    }, { async: true });
 
 
 
