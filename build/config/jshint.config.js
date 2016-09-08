@@ -45,7 +45,9 @@
     });
 
     exports.clientGlobals = merge(universalGlobals, {
-
+        //React
+        ReactDOM: false,
+        React: false
     });
 
 }());
