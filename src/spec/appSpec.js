@@ -1,19 +1,21 @@
 'use strict';
 
-//var SimpleTest = require('../app.js').SimpleTest;
-//var TestUtils = require('react-addons-test-utils');
 
-describe("It is a spec ",function(){
-    it("to test react",function(){
-       /* var component = TestUtils.renderIntoDocument(<SimpleTest />);
+var React = require('react');
+var ReactDOM = require('react-dom');
+var TestUtils = require('react-addons-test-utils');
+var SimpleModule = require('../simpleModule.js');
 
-        var h1 = TestUtils(
-            component, 'h1'
-        );
+describe("A suite", function() {
+    it("contains spec with an expectation", function() {
+        expect(true).toBe(true);
+    });
 
-        console.log(h1.findDOMNode.textContent)
-        expect(h1.findDOMNode().textContent)
-            .toEqual('Hello, world! 2');*/
-        expect(true).toBe(false);
-    })
+    it("works on client code", function() {
+        var component = TestUtils.renderIntoDocument(React.createElement(SimpleModule));
+        expect(ReactDOM.findDOMNode(component).textContent).toEqual('Hello, world! 2');
+
+    });
 });
+
+
