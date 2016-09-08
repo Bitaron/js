@@ -1,5 +1,2 @@
-(function(){
-    'use strict';
-
-    exports.const = 2;
-}());
+'use strict';
+exports.const = 2;
