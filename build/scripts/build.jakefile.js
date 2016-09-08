@@ -4,8 +4,7 @@
     var shell = require("shelljs");
     var version = require("../util/version_checker.js");
 
-    var jshint = require("simplebuild-jshint");
-    var jshintConfig = require("../config/jshint.config.js");
+    var eslintRunner = require("../util/eslint_runner.js");
 
     var paths = require("../config/paths.js");
     var browserify = require("../util/browserify_runner.js");
@@ -49,22 +48,22 @@
     desc("Lint Node");
     task("lintNode",function(){
         process.stdout.write("Linting node .");
-        jshint.checkFiles(
+        eslintRunner.lint(
             {
-                files : ["build/**/*.js"],
-                options: jshintConfig.nodeOptions,
-                globals : jshintConfig.nodeGlobals
+                files : ["build/"],
+                configFilePath : paths.eslintConfFile
+
             },complete,fail);
     },{async : true});
 
     desc("Lint Client");
     task("lintClient",function(){
         process.stdout.write("Linting client ..");
-        jshint.checkFiles(
+        eslintRunner.lint(
             {
-                files : ["src/*.js"],
-                options : jshintConfig.clientOptions,
-                globals : jshintConfig.clientGlobals
+                files : ["src/"],
+                configFilePath : paths.eslintConfFile
+
             },complete,fail);
     },{async : true});
 
@@ -83,7 +82,7 @@
 
     desc("Karma server. Run this first");
     task("karma", function() {
-        karma.serve(paths.karmaConfigFile, complete, fail);
+        karma.serve(paths.karmaConfFile, complete, fail);
     }, { async: true });
 
 
@@ -93,7 +92,7 @@
     task("testClient", function() {
         console.log("Testing browser code: ");
         karma.runTests({
-            configFile: paths.karmaConfigFile,
+            configFile: paths.karmaConfFile,
             browsers: [],
             strict: true
         }, complete, fail);

@@ -1,9 +1,9 @@
-"use strict";
+'use strict';
 
-var React = require('react');
+//var React = require('react');
 var ReactDOM = require('react-dom');
 
-var constant = require("./constants.js");
+var constant = require('./constants.js');
 
 exports.test = function test(){
 
