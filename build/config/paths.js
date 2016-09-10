@@ -3,7 +3,7 @@
 
     module.exports = {
         distDir : "generated/dist",
-        clientDir : "src/js",
+        clientDir : "src",
         clientEntryPoint : "src/js/app.js",
         clientDistBundle : "generated/dist/bundle.js",
 

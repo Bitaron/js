@@ -2,12 +2,11 @@
 
 var React = require('react');
 var ReactDOM = require('react-dom');
-var SimpleModule = require('./simpleModule.js');
+var Place = require('./place.js');
 
-
-exports.test = function test() {
+exports.render = function test() {
     ReactDOM.render(
-        <SimpleModule />,
+        <Place />,
         document.getElementById('test')
     );
 };
