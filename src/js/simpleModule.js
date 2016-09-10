@@ -9,5 +9,4 @@ var SimpleModule = React.createClass({
     }
 
 });
-
 module.exports = SimpleModule;

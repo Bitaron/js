@@ -1,6 +1,6 @@
 'use strict';
 
-var constatnts = require('../constants.js');
+var constatnts = require('../js/constants.js');
 
 
 describe('A suite', function() {

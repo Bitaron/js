@@ -3,8 +3,8 @@
 
     module.exports = {
         distDir : "generated/dist",
-        clientDir : "src/",
-        clientEntryPoint : "src/app.js",
+        clientDir : "src/js",
+        clientEntryPoint : "src/js/app.js",
         clientDistBundle : "generated/dist/bundle.js",
 
         karmaConfFile : "build/config/karma.conf.js",
