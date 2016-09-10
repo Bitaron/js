@@ -26,5 +26,7 @@ exports.run = function(config, success, failure) {
         }
     });
 
+    success();
+
 };
 

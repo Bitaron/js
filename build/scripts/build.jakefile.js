@@ -76,7 +76,7 @@
 
     desc("Test on cmd");
     task("simpleTest",function(){
-        process.stdout.write("Testing on cmd ..");
+        process.stdout.write("Test using jasmine ..");
         jasmineTestRunner.run(jasmineConfig,complete,fail);
     },{async : true});
 

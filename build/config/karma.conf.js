@@ -31,6 +31,10 @@ module.exports = function(config) {
             'src/**/*.js' : [ 'browserify' ]
         },
 
+        browserify: {
+            debug: true,
+            transform: ['reactify']
+        },
 
         // test results reporter to use
         // possible values: 'dots', 'progress'
