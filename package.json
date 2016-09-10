@@ -12,6 +12,7 @@
     "eslint": "^3.4.0",
     "eslint-plugin-react": "^6.2.0",
     "flux": "^2.1.1",
+    "google-locations": "^0.2.0",
     "jake": "^8.0.12",
     "jasmine": "^2.5.0",
     "jasmine-console-reporter": "^1.2.7",
