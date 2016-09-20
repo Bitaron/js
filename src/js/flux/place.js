@@ -1,9 +1,7 @@
 'use strict';
 
 var React = require('react');
-var GoogleLocations = require('google-locations');
-var config = require('./../config.js');
-var $ = require("jquery");
+var $ = require('jquery');
 var LocationStore = require('./location.store');
 var LocationStoreAction = require('./location.action.creator');
 
@@ -29,7 +27,7 @@ var Place = React.createClass({
         LocationStore.removeChangeListener(this._onChange);
     },
 
-    showValue : function(){
+    showValue: function() {
         LocationStoreAction.loadLocation($('#first').val());
     },
 

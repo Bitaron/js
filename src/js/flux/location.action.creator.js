@@ -7,7 +7,7 @@ var LocationStoreAction = {
         Dispatcher.handleViewAction({
             actionType: ActionConstants.LOAD_LOCATION,
             data: data
-        })
+        });
     }
 
 };

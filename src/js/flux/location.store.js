@@ -10,7 +10,7 @@ function loadLocation(data) {
     _location = data;
 }
 
-var LocationStore = assign({},EventEmitter.prototype, {
+var LocationStore = assign({}, EventEmitter.prototype, {
 
     getLocation: function() {
         return _location;
@@ -33,19 +33,15 @@ var LocationStore = assign({},EventEmitter.prototype, {
 
 Dispatcher.register(function(payload) {
     var action = payload.action;
-    var text;
-    switch(action.actionType) {
+    switch (action.actionType) {
         case ActionsConstants.LOAD_LOCATION:
             loadLocation(action.data);
             break;
-
         default:
             return true;
     }
     LocationStore.emitChange();
-
     return true;
-
 });
 
 module.exports = LocationStore;

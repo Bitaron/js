@@ -6,6 +6,6 @@ AppDispatcher.handleViewAction = function(action) {
         source: 'VIEW_ACTION',
         action: action
     });
-}
+};
 
 module.exports = AppDispatcher;

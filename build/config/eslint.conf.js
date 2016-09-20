@@ -10,7 +10,7 @@ module.exports = {
 
     "env": {
         "es6": false,
-        "browser": false,     // browser global variables.
+        "browser": true,     // browser global variables.
         "node": true,        // Node.js global variables and Node.js-specific rules.
         "amd": false,         // defines require() and define() as global variables as per the amd spec.
         "mocha": false,       // adds all of the Mocha testing global variables.
@@ -22,11 +22,25 @@ module.exports = {
     },
 
 
+    "plugins": [
+        "react"
+    ],
+
+    "extends": ["eslint:recommended", "plugin:react/recommended"],
+
+    "settings": {
+        "react": {
+            "createClass": "createClass", // Regex for Component Factory to use, default to "createClass"
+            "pragma": "React",  // Pragma to use, default to "React"
+            // React version, default to the latest React stable release
+        }
+    },
 
     "globals": {
         "document": false,
         "navigator": false,
-        "window": false
+        "window": false,
+        "React": true
     },
 
     "rules": {
