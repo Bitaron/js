@@ -34,11 +34,17 @@ var Place = React.createClass({
         });
     },
     componentDidMount: function() {
-        this.googlePlaceAutoCompleteInitialize();
+    //    this.googlePlaceAutoCompleteInitialize();
     },
-    showAlert: function() {
-        alert(this.state.message);
+
+    showValue : function(){
+        var location = $("#input"+this.props.locationId).val();
+        console.log(location);
+        this.setState({
+            name : location
+        });
     },
+
     render: function() {
         var imageSource = 'http://openweathermap.org/img/w/'.concat(this.state.imageIcon).concat('.png');
         return (
