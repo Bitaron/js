@@ -1,4 +1,8 @@
+'use strict';
+
 var React = require('react');
+var GoogleLocations = require('google-locations');
+var config = require('./config.js');
 
 var Place = React.createClass({
 
@@ -13,13 +17,24 @@ var Place = React.createClass({
         };
     },
     googlePlaceAutoCompleteInitialize: function() {
-        var options = {
-            types: ['(cities)']
-        };
-        for (var i = 0; i < 5; i++) {
-            var input = document.getElementById('input'.concat(this.props.locationId));
-            var autocomplete = new google.maps.places.Autocomplete(input, options);
-        }
+        var googleLocations = new GoogleLocations(config.GOOGLE_API_KEY);
+        var input = document.getElementById('input');
+
+        googleLocations.autocomplete({input: input, types: '(cities)'}, function(err, response) {
+            console.log('autocomplete: ', response.predictions);
+
+            var success = function(err, response) {
+                console.log('did you mean: ', response.result.name);
+                // did you mean:  Vermont
+                // did you mean:  Vermont South
+                // did you mean:  Vermilion
+                // did you mean:  Vermillion
+            };
+
+            for (var index in response.predictions) {
+                googleLocations.details({placeid: response.predictions[index].place_id}, success);
+            }
+        });
     },
     componentDidMount: function() {
         this.googlePlaceAutoCompleteInitialize();
@@ -28,12 +43,11 @@ var Place = React.createClass({
         alert(this.state.message);
     },
     render: function() {
-        var inputFormId = 'input'.concat(this.props.locationId);
         var imageSource = 'http://openweathermap.org/img/w/'.concat(this.state.imageIcon).concat('.png');
         return (
             <div className="generalDiv">
                 <div>
-                    <input id={inputFormId} type="text" />
+                    <input type="text" />
                 </div>
                 <button type="button" onClick={this.showValue}>Add!</button>
                 <button type="button" onClick={this.reset}>Reset!</button>

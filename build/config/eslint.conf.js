@@ -1,6 +1,6 @@
 module.exports = {
     "parserOptions": {
-        "ecmaVersion": 6,
+        "ecmaVersion": 5,
         "ecmaFeatures": {
             "experimentalObjectRestSpread": true,
             "jsx": true
@@ -9,7 +9,7 @@ module.exports = {
     },
 
     "env": {
-        "es6": true,
+        "es6": false,
         "browser": false,     // browser global variables.
         "node": true,        // Node.js global variables and Node.js-specific rules.
         "amd": false,         // defines require() and define() as global variables as per the amd spec.
