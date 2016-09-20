@@ -29,6 +29,12 @@ module.exports = {
         "window": false
     },
 
+    "plugins": [
+        "react"
+    ],
+
+    "extends": ["eslint:recommended", "plugin:react/recommended"],
+
     "rules": {
         "accessor-pairs": 2,
         "arrow-spacing": [2, { "before": true, "after": true }],
