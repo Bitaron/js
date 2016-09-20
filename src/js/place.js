@@ -3,6 +3,7 @@
 var React = require('react');
 var GoogleLocations = require('google-locations');
 var config = require('./config.js');
+var $ = require("jquery");
 
 var Place = React.createClass({
 
@@ -38,7 +39,7 @@ var Place = React.createClass({
     },
 
     showValue : function(){
-        var location = $("#input"+this.props.locationId).val();
+        var location = $("#first").val();
         console.log(location);
         this.setState({
             name : location
@@ -48,9 +49,9 @@ var Place = React.createClass({
     render: function() {
         var imageSource = 'http://openweathermap.org/img/w/'.concat(this.state.imageIcon).concat('.png');
         return (
-            <div className="generalDiv">
+            <div className="generalDiv" >
                 <div>
-                    <input type="text" />
+                    <input type="text" id="first"/>
                 </div>
                 <button type="button" onClick={this.showValue}>Add!</button>
                 <button type="button" onClick={this.reset}>Reset!</button>
