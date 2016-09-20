@@ -16,6 +16,7 @@ var Place = React.createClass({
             message: null
         };
     },
+    // TODO: implement google place auto complete.
     googlePlaceAutoCompleteInitialize: function() {
         var googleLocations = new GoogleLocations(config.GOOGLE_API_KEY);
         var input = document.getElementById('input');
@@ -25,10 +26,6 @@ var Place = React.createClass({
 
             var success = function(err, response) {
                 console.log('did you mean: ', response.result.name);
-                // did you mean:  Vermont
-                // did you mean:  Vermont South
-                // did you mean:  Vermilion
-                // did you mean:  Vermillion
             };
 
             for (var index in response.predictions) {
