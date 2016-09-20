@@ -1,16 +1,16 @@
 var Dispatcher = require('./dispatcher');
 var EventEmitter = require('events').EventEmitter;
 var ActionsConstants = require('./action.constant.js');
-
+var assign = require('object-assign');
 
 var _location;
 
 
 function loadLocation(data) {
-    _location = data.name;
+    _location = data;
 }
 
-var LocationStore = merge(EventEmitter.prototype, {
+var LocationStore = assign({},EventEmitter.prototype, {
 
     getLocation: function() {
         return _location;

@@ -4,7 +4,7 @@ var ActionConstants = require('./action.constant');
 var LocationStoreAction = {
 
     loadLocation: function(data) {
-        Dispatcher.handleAction({
+        Dispatcher.handleViewAction({
             actionType: ActionConstants.LOAD_LOCATION,
             data: data
         })
