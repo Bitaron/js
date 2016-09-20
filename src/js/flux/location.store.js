@@ -1,21 +1,19 @@
 var Dispatcher = require('./dispatcher');
 var EventEmitter = require('events').EventEmitter;
+var ActionsConstants = require('./action.constant.js');
 
 
-// Internal object of shoes
-var _loacation;
+var _location;
 
-// Method to load shoes from action data
-function loadShoes(data) {
-    _loacation = data.name;
+
+function loadLocation(data) {
+    _location = data.name;
 }
 
-// Merge our store with Node's Event Emitter
-var Store = merge(EventEmitter.prototype, {
+var LocationStore = merge(EventEmitter.prototype, {
 
-    // Returns all shoes
     getLocation: function() {
-        return _loacation;
+        return _location;
     },
 
     emitChange: function() {
@@ -32,14 +30,22 @@ var Store = merge(EventEmitter.prototype, {
 
 });
 
-// Register dispatcher callback
+
 Dispatcher.register(function(payload) {
     var action = payload.action;
     var text;
-    Store.emitChange();
+    switch(action.actionType) {
+        case ActionsConstants.LOAD_LOCATION:
+            loadLocation(action.data);
+            break;
+
+        default:
+            return true;
+    }
+    LocationStore.emitChange();
 
     return true;
 
 });
 
-module.exports = Store;
+module.exports = LocationStore;

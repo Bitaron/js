@@ -2,20 +2,21 @@
 
 var React = require('react');
 var GoogleLocations = require('google-locations');
-var config = require('./config.js');
+var config = require('./../config.js');
 var $ = require("jquery");
+var LocationStore = require('./location.store');
+var LocationStoreAction = require('./location.action.creator');
+
+function getAppState() {
+    return {
+        name: LocationStore.getLocation()
+    };
+}
 
 var Place = React.createClass({
 
     getInitialState: function() {
-        return {
-            success: false,
-            name: null,
-            temperaturInCelcius: null,
-            currentTime: null,
-            imageIcon: null,
-            message: null
-        };
+        return getAppState();
     },
     // TODO: implement google place auto complete.
     googlePlaceAutoCompleteInitialize: function() {
@@ -34,16 +35,23 @@ var Place = React.createClass({
             }
         });
     },
+
     componentDidMount: function() {
-    //    this.googlePlaceAutoCompleteInitialize();
+        LocationStore.addChangeListener(this._onChange);
     },
 
+
+    componentWillUnmount: function() {
+        LocationStore.removeChangeListener(this._onChange);
+    },
     showValue : function(){
-        var location = $("#first").val();
-        console.log(location);
-        this.setState({
-            name : location
-        });
+        LocationStoreAction.loadLocation($('#first').val());
+        var state = getAppState();
+        console.log(state.name);
+    },
+
+    _onChange: function() {
+        this.setState(getAppState());
     },
 
     render: function() {
