@@ -3,7 +3,7 @@ var EventEmitter = require('events').EventEmitter;
 var ActionsConstants = require('./action.constant.js');
 var assign = require('object-assign');
 
-var _location;
+var _location = {};
 
 
 function loadLocation(data) {

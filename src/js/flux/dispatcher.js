@@ -8,4 +8,10 @@ AppDispatcher.handleViewAction = function(action) {
     });
 };
 
+AppDispatcher.handleRestApiAction = function(action) {
+    this.dispatch({
+        source: 'REST_API_ACTION',
+        action: action
+    });
+};
 module.exports = AppDispatcher;
