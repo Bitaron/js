@@ -8,13 +8,6 @@ var ActionCreator = {
             actionType: ActionConstants.LOAD_LOCATION,
             data: data
         });
-    },
-
-    callWeatherApi: function(data) {
-        Dispatcher.handleRestApiAction({
-            actionType: ActionConstants.CALL_LOCATION_API,
-            data: data
-        });
     }
 };
 

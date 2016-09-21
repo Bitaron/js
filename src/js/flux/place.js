@@ -29,7 +29,8 @@ var Place = React.createClass({
     },
 
     callApi: function() {
-        ActionCreator.callWeatherApi($('#first').val());
+        //ActionCreator.callWeatherApi($('#first').val());
+        ActionCreator.loadLocation($('#first').val());
     },
 
     _onChange: function() {
@@ -37,7 +38,7 @@ var Place = React.createClass({
     },
 
     invokeLoadLocationAction: function() {
-        ActionCreator.loadLocation(RestApiStore.getWeatherData());
+        //ActionCreator.loadLocation(RestApiStore.getWeatherData());
     },
 
 
