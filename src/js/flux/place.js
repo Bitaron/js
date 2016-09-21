@@ -36,7 +36,7 @@ var Place = React.createClass({
         this.setState(getAppState());
     },
 
-    invokeLoadLocationAction: function(){
+    invokeLoadLocationAction: function() {
         ActionCreator.loadLocation(RestApiStore.getWeatherData());
     },
 

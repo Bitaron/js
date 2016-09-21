@@ -14,7 +14,7 @@ var ActionCreator = {
         Dispatcher.handleRestApiAction({
             actionType: ActionConstants.CALL_LOCATION_API,
             data: data
-        })
+        });
     }
 };
 
