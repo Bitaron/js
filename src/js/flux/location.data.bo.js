@@ -7,7 +7,7 @@ var LocationData = function() {
     this.temp = '';
 
     this.fetch = function(data) {
-       return $.ajax(getAjaxConfig(data)) ;
+        return $.ajax(getAjaxConfig(data));
     };
 };
 

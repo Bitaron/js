@@ -29,8 +29,8 @@ var LocationStore = assign({}, EventEmitter.prototype, {
 LocationStore.locationData = new LocationData();
 
 LocationStore.internals = {
-    init : function(data){
-        return LocationStore.locationData.fetch(data).then(function successfulCallback(response){
+    init: function(data) {
+        return LocationStore.locationData.fetch(data).then(function successfulCallback(response) {
             LocationStore.locationData.name = response.name;
             LocationStore.locationData.temp = response.main.temp;
             LocationStore.emitChange();

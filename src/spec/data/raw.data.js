@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-    name : 'london',
-    temp : 23
+    name: 'london',
+    temp: 23
 };
 
