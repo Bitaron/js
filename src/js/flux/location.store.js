@@ -26,17 +26,15 @@ var LocationStore = assign({}, EventEmitter.prototype, {
 
 });
 
-LocationStore.locationData = {};
+LocationStore.locationData = new LocationData();
 
 LocationStore.internals = {
     init : function(data){
-        LocationStore.locationData = new LocationData();
         return LocationStore.locationData.fetch(data).then(function successfulCallback(response){
-            LocationData.locationData = new LocationData();
             console.log(response);
             LocationStore.locationData.name = response.name;
             LocationStore.locationData.temp = response.main.temp;
-            console.log( LocationStore.locationData);
+            //console.log( LocationStore.locationData);
             LocationStore.emitChange();
         });
     }
