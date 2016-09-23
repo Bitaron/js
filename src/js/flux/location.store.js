@@ -31,10 +31,8 @@ LocationStore.locationData = new LocationData();
 LocationStore.internals = {
     init : function(data){
         return LocationStore.locationData.fetch(data).then(function successfulCallback(response){
-            console.log(response);
             LocationStore.locationData.name = response.name;
             LocationStore.locationData.temp = response.main.temp;
-            //console.log( LocationStore.locationData);
             LocationStore.emitChange();
         });
     }
