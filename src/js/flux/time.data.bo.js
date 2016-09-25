@@ -1,13 +1,15 @@
 'use strict';
-var moment = require('moment');
+
+var moment = require('moment-timezone');
 
 var TimeData = function() {
 
 };
+
 TimeData.getDataBasedOnLocal = function(locale) {
-    moment().locale(locale);
+    
     return {
-        currentTime: moment().format()
+        currentTime: moment.tz(locale).format()
     }
 };
 module.exports = TimeData;

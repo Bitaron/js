@@ -29,7 +29,8 @@ var Time = React.createClass({
 
     _loadTimeBasedOnLocal: function() {
         console.log('In time react');
-        setInterval( function(){ActionCreator.getTimeBasedOnLocale('en')}, 1000);
+        //setInterval( function(){ActionCreator.getTimeBasedOnLocale('en')}, 1000);
+        ActionCreator.getTimeBasedOnLocale('America/Los_Angeles');
     },
 
     _onChange: function() {
