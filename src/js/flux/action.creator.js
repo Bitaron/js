@@ -8,6 +8,14 @@ var ActionCreator = {
             actionType: ActionConstants.LOAD_LOCATION,
             data: data
         });
+    },
+
+    getTimeBasedOnLocale: function(data) {
+        console.log('In action creator');
+        Dispatcher.handleViewAction({
+            actionType: ActionConstants.GET_TIME_BASED_ON_LOCALE,
+            data: data
+        });
     }
 };
 

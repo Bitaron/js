@@ -5,6 +5,8 @@ var $ = require('jquery');
 var LocationStore = require('./location.store');
 var ActionCreator = require('./action.creator');
 
+var Time = require('./time');
+
 
 function getAppState() {
     return LocationStore.getLocation();
@@ -31,12 +33,15 @@ var Place = React.createClass({
     },
 
     _onChange: function() {
+        console.log('In place react');
         this.setState(getAppState());
     },
 
 
 
     render: function() {
+        var time = [];
+        time.push(<Time />);
         return (
             <div className="generalDiv" >
                 <div>
@@ -45,8 +50,9 @@ var Place = React.createClass({
                 <button type="button" onClick={this.loadLocation}>Add!</button>
                 <p>{this.state.name}</p>
                 <p>{this.state.temp}</p>
-
+                {time}
             </div>
+
         );
     }
 });
