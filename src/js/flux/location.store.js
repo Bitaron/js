@@ -35,14 +35,12 @@ LocationStore.internals = {
             LocationStore.locationData.temp = response.main.temp + 'K';
             LocationStore.locationData.latitude = response.coord.lat;
             LocationStore.locationData.longitude = response.coord.lon;
-            console.log(LocationStore.locationData);
             LocationStore.internals.getTimeZone(LocationStore.locationData);
         });
     },
 
     getTimeZone: function(data) {
         return LocationStore.locationData.fetchTimezone(data).then(function successfulCallback(response) {
-            console.log(response);
             LocationStore.locationData.timezone = response.timeZoneId;
             LocationStore.emitChange();
         });
