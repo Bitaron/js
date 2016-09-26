@@ -33,7 +33,6 @@ var Place = React.createClass({
     },
 
     _onChange: function() {
-        console.log('In place react');
         this.setState(getAppState());
     },
 
