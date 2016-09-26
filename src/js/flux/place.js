@@ -40,7 +40,7 @@ var Place = React.createClass({
 
     render: function() {
         var time = [];
-        time.push(<Time />);
+        time.push(<Time key={1} />);
         return (
             <div className="generalDiv" >
                 <div>

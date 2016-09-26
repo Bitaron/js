@@ -32,8 +32,10 @@ TimeStore.timeData = new TimeData();
 
 TimeStore.internals = {
     init: function(data) {
-        TimeStore.timeData = TimeData.getDataBasedOnLocal(data);
-        TimeStore.emitChange();
+        setInterval(function() {
+            TimeStore.timeData = TimeData.getDataBasedOnLocal(data);
+            TimeStore.emitChange();
+        },1000);
     }
 };
 

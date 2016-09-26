@@ -28,7 +28,7 @@ var Time = React.createClass({
     },
 
     _loadTimeBasedOnLocal: function() {
-        ActionCreator.getTimeBasedOnLocale('America/Los_Angeles');
+        ActionCreator.getTimeBasedOnLocale(LocationStore.locationData.timezone);
     },
 
     _onChange: function() {

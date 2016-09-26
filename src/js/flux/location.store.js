@@ -30,9 +30,20 @@ LocationStore.locationData = new LocationData();
 
 LocationStore.internals = {
     init: function(data) {
-        return LocationStore.locationData.fetch(data).then(function successfulCallback(response) {
+        return LocationStore.locationData.fetchWeatherData(data).then(function successfulCallback(response) {
             LocationStore.locationData.name = response.name;
-            LocationStore.locationData.temp = response.main.temp;
+            LocationStore.locationData.temp = response.main.temp + 'K';
+            LocationStore.locationData.latitude = response.coord.lat;
+            LocationStore.locationData.longitude = response.coord.lon;
+            console.log(LocationStore.locationData);
+            LocationStore.internals.getTimeZone(LocationStore.locationData);
+        });
+    },
+
+    getTimeZone: function(data) {
+        return LocationStore.locationData.fetchTimezone(data).then(function successfulCallback(response) {
+            console.log(response);
+            LocationStore.locationData.timezone = response.timeZoneId;
             LocationStore.emitChange();
         });
     }

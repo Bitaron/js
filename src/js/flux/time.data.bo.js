@@ -11,5 +11,8 @@ TimeData.getDataBasedOnLocal = function(locale) {
         currentTime: moment.tz(locale).format()
     };
 };
+
+
+
 module.exports = TimeData;
 
