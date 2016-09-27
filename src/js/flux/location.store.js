@@ -31,11 +31,17 @@ LocationStore.locationData = new LocationData();
 LocationStore.internals = {
     init: function(data) {
         return LocationStore.locationData.fetchWeatherData(data).then(function successfulCallback(response) {
-            LocationStore.locationData.name = response.name;
-            LocationStore.locationData.temp = response.main.temp + 'K';
-            LocationStore.locationData.latitude = response.coord.lat;
-            LocationStore.locationData.longitude = response.coord.lon;
-            LocationStore.internals.getTimeZone(LocationStore.locationData);
+          if(response.cod == '200') {
+              LocationStore.locationData.name = response.name;
+              LocationStore.locationData.temp = response.main.temp + 'K';
+              LocationStore.locationData.latitude = response.coord.lat;
+              LocationStore.locationData.longitude = response.coord.lon;
+              LocationStore.internals.getTimeZone(LocationStore.locationData);
+          }else {
+              LocationStore.locationData.name = 'Please Enter valid city';
+              LocationStore.emitChange();
+          }
+
         });
     },
 
