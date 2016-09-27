@@ -28,16 +28,14 @@ function getAjaxConfig(location) {
 }
 
 function getTimeAjaxConfig(location) {
-    var Uri = 'https://maps.googleapis.com/maps/api/timezone/json?location='+
-        location.latitude+','+location.longitude+'&timestamp=1331161200&key=AIzaSyDFf_Hno8usyxkN3PNUorVu_vs8x-k0DM8';
+    var Uri = 'https://maps.googleapis.com/maps/api/timezone/json?location=' +
+        location.latitude + ',' + location.longitude + '&timestamp=1331161200&key=AIzaSyDFf_Hno8usyxkN3PNUorVu_vs8x-k0DM8';
     var ajaxConfig = {
         url: Uri,
         type: 'GET'
     };
     return ajaxConfig;
 }
-
-
 
 module.exports = LocationData;
 

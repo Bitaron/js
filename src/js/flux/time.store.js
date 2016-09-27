@@ -39,7 +39,7 @@ TimeStore.internals = {
             TimeStore.timeData = new TimeData();
             TimeStore.timeData = TimeData.getDataBasedOnLocal(data);
             TimeStore.emitChange();
-        },1000);
+        }, 1000);
     }
 };
 
