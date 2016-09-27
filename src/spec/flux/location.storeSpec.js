@@ -8,9 +8,14 @@ var testData = require('../data/test.data');
 
 describe('Location store', function() {
     beforeEach(function() {
-        LocationStore.locationData.fetch = function () {
+        LocationStore.locationData.fetchWeatherData = function () {
             return new Promise(function (resolve) {
                 resolve(testData.WEATHER_API_RESPONSE);
+            });
+        };
+        LocationStore.locationData.fetchTimezone = function () {
+            return new Promise(function (resolve) {
+                resolve(testData.TIME_ZOME_API_RESPONSE);
             });
         };
     });
@@ -19,6 +24,9 @@ describe('Location store', function() {
         setTimeout(() => {
             expect(LocationStore.locationData.name).toEqual(realData.name);
             expect(LocationStore.locationData.temp).toEqual(realData.temp);
+            expect(LocationStore.locationData.latitude).toEqual(realData.latitude);
+            expect(LocationStore.locationData.longitude).toEqual(realData.longitude);
+            expect(LocationStore.locationData.timezone).toEqual(realData.timezone);
             done();
         }, 0);
     });
