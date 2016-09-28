@@ -30,16 +30,16 @@ var TimeStore = assign({}, EventEmitter.prototype, {
 
 TimeStore.timeData = new TimeData();
 
-var refreshIntervalId;
+TimeStore.refreshIntervalId;
 
 TimeStore.internals = {
     init: function(data) {
-        clearInterval(refreshIntervalId);
-        refreshIntervalId = setInterval(function() {
-            TimeStore.timeData = new TimeData();
+        TimeStore.timeData = TimeData.getDataBasedOnLocal(data);
+        clearInterval(TimeStore.refreshIntervalId);
+        TimeStore.refreshIntervalId = setInterval(function() {
             TimeStore.timeData = TimeData.getDataBasedOnLocal(data);
-            TimeStore.emitChange();
         }, 1000);
+        TimeStore.emitChange();
     }
 };
 
