@@ -30,8 +30,8 @@ LocationStore.locationData = new LocationData();
 
 LocationStore.internals = {
     init: function(data) {
-        return LocationStore.locationData.fetchWeatherData(data).then(function successfulCallback(response) {
-            if (response.cod === '200') {
+        LocationStore.locationData.fetchWeatherData(data).then(function successfulCallback(response) {
+            if (response.cod === 200) {
                 LocationStore.locationData.name = response.name;
                 LocationStore.locationData.temp = response.main.temp;
                 LocationStore.locationData.latitude = response.coord.lat;
@@ -39,13 +39,15 @@ LocationStore.internals = {
                 LocationStore.internals.getTimeZone(LocationStore.locationData);
             } else {
                 LocationStore.locationData.name = 'Please Enter valid city';
+                LocationStore.locationData.temp = '';
+                LocationStore.locationData.timezone = '';
                 LocationStore.emitChange();
             }
         });
     },
 
     getTimeZone: function(data) {
-        return LocationStore.locationData.fetchTimezone(data).then(function successfulCallback(response) {
+        LocationStore.locationData.fetchTimezone(data).then(function successfulCallback(response) {
             LocationStore.locationData.timezone = response.timeZoneId;
             LocationStore.emitChange();
         });
@@ -59,7 +61,7 @@ Dispatcher.register(function(payload) {
             LocationStore.internals.init(action.data);
             break;
         default:
-            return true;
+            break;
     }
     return true;
 });

@@ -35,11 +35,12 @@ TimeStore.refreshIntervalId;
 TimeStore.internals = {
     init: function(data) {
         TimeStore.timeData = TimeData.getDataBasedOnLocal(data);
+        TimeStore.emitChange();
         clearInterval(TimeStore.refreshIntervalId);
         TimeStore.refreshIntervalId = setInterval(function() {
             TimeStore.timeData = TimeData.getDataBasedOnLocal(data);
+            TimeStore.emitChange();
         }, 1000);
-        TimeStore.emitChange();
     }
 };
 
@@ -50,7 +51,7 @@ Dispatcher.register(function(payload) {
             TimeStore.internals.init(action.data);
             break;
         default:
-            return true;
+            break;
     }
     return true;
 });

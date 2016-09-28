@@ -4,7 +4,7 @@ var realData = require('./raw.data');
 
 module.exports = {
     WEATHER_API_RESPONSE: {
-        cod: '200',
+        cod: 200,
         coord: {
             lat: 23,
             lon: 90

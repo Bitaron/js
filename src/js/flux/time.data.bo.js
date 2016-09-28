@@ -7,7 +7,6 @@ var TimeData = function() {
 };
 
 TimeData.getDataBasedOnLocal = function(locale) {
-    console.log('here 2');
     return {
         currentTime: moment.tz(locale).format()
     };
