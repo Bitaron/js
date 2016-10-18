@@ -17,7 +17,7 @@ Float.parse = function(significand,exponent){
 
 Float.parseNumber = function(decimalNumber) {
     var isExponentMinus = false;
-    if(decimalNumber >= 1){
+    if(decimalNumber >= 1) {
         isExponentMinus = true;
     }
 
@@ -47,6 +47,18 @@ Float.parseNumber = function(decimalNumber) {
         }
     }
 
+};
+
+Float.compare = function (first, second) {
+    var firstInDecimal = Float.convertToSingleNumber(first);
+    var secondInDecimal = Float.convertToSingleNumber(second);
+    if(firstInDecimal > secondInDecimal) {
+        return 1;
+    }else if(firstInDecimal < secondInDecimal) {
+        return -1;
+    }else{
+        return 0;
+    }
 };
 
 Float.convertToSingleNumber = function(float) {
