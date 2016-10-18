@@ -18,8 +18,8 @@ module.exports = {
         },
 
         SORT_DATA :  [
-            Immutable.Map({S:1.5, E:4}),
-            Immutable.Map({S:6.667, E:-11})
+            Immutable.Map({S:6.667, E:-11}),
+            Immutable.Map({S:1.5, E:4})
         ]
     }
 };

@@ -46,13 +46,14 @@ describe("Float can ",function() {
     })
 });
 
-/*
- describe("Operation: short by ",function() {
- it("insertion sort",function() {
- var sorted  = Float.shortInsertion(TestData.OPERATION_DATA.SORT_DATA);
- for(var i= 0 ; i< sorted.length(); i++) {
- expect(sorted[i].equals(ExpectedData.OPERATION_DATA.SORT_DATA[i])).toBe(true);
- }
- })
- });
- */
+
+describe("Operation: short by ",function() {
+    it("insertion sort",function() {
+        var sorted  = Float.sortByInsertion(TestData.OPERATION_DATA.SORT_DATA);
+        var length = sorted.length;
+        expect(length).toBe(2);
+        for(var i= 0 ; i< length; i++) {
+            expect(sorted[i].equals(ExpectedData.OPERATION_DATA.SORT_DATA[i])).toBe(true);
+        }
+    })
+});
