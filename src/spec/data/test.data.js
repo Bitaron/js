@@ -13,9 +13,17 @@ module.exports = {
         CONVERTION_DATA : {
             FIRST : Immutable.Map({S:1.5,
                 E:4}),
+            FIRST_M : Immutable.Map({S:-1.5,
+                E:4}),
             SECOND: Immutable.Map({S:6.667,
                 E:-11})
-        }
+        },
+
+        SORT_DATA :  [
+            Immutable.Map({S:6.667, E:-11}),
+            Immutable.Map({S:1.5, E:4})
+        ]
+
     }
 
 };
