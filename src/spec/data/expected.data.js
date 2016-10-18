@@ -1,7 +1,14 @@
 "use strict";
 
 var Immutable = require('immutable');
-var RealData = require('./real.data');
+var TestData = require('./test.data');
 module.exports = {
-    FLOAT_DATA : Immutable.Map({S:RealData.significand, E:RealData.exponent})
+    CONSTRUCTOR_DATA : Immutable.Map({S:TestData.CONSTRUCTOR_DATA.significand,
+        E:TestData.CONSTRUCTOR_DATA.exponent}),
+    OPERATION_DATA : {
+        CONVERSITION_DATA : {
+            FIRST : 15000,
+            SECOND: 0.00000000006667
+        }
+    }
 };
