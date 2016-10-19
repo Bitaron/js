@@ -1,6 +1,7 @@
 'use strict';
 
 var Immutable = require('immutable');
+var SortUtility = require('./sort.utility');
 
 var Float = function() {
 
@@ -77,25 +78,9 @@ Float.convertToSingleNumber = function(float) {
 };
 
 Float.sortByInsertion = function(unsortedArray) {
-    var sortedArray = Float.insertionSort(unsortedArray,Float.compare);
+    var sortedArray = SortUtility.insertionSort(unsortedArray,Float.compare);
     return sortedArray;
 };
 
-Float.insertionSort = function(unsortedArray, comparisonFunction) {
-    var sortedArray = [];
-
-    for(var i = 0; i<unsortedArray.length; i++) {
-        for(var j = i+1; j<unsortedArray.length; j++) {
-            var isSmaller = comparisonFunction(unsortedArray[i],unsortedArray[j]) !== -1;
-            if(isSmaller) {
-                var temp = unsortedArray[i];
-                unsortedArray[i] = unsortedArray[j];
-                unsortedArray[j] = temp;
-            }
-        }
-    }
-    sortedArray = unsortedArray;
-    return sortedArray;
-};
 
 module.exports = Float;

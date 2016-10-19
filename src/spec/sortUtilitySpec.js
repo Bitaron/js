@@ -1,7 +1,13 @@
 "use strict";
 
-var TestData = require('../spec/data/test.data');
-var ExpectedData = require('./data/expected.data');
+var SortData = require('./data/sort.utility.data');
+var SortUtility = require('../client/sort.utility');
 
-describe('sort utility can use ', function() {
+describe('SORT UTITLITY TESTS ', function() {
+    describe('sort utility can use ', function() {
+        it('insertion sort', function() {
+            var sortedArray = SortUtility.insertionSort(SortData.simple.u,SortData.compare);
+            expect(sortedArray).toEqual(SortData.simple.s);
+        })
+    });
 });
