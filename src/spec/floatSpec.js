@@ -18,7 +18,7 @@ describe("Create float using ", function() {
         expect(first.equals(TestData.OPERATION_DATA.CONVERTION_DATA.FIRST)).toBe(true);
         //expect(firstMinus.equals(TestData.OPERATION_DATA.CONVERTION_DATA.FIRST_M)).toBe(true);
         expect(second.equals(TestData.OPERATION_DATA.CONVERTION_DATA.SECOND)).toBe(true);
-    })
+    });
 });
 
 describe("Float can ",function() {
@@ -43,7 +43,7 @@ describe("Float can ",function() {
         var equal = Float.compare(TestData.newtonsGravitationalConstantInFloat,
             TestData.newtonsGravitationalConstantInFloat);
         expect(equal).toBe(0);
-    })
+    });
 });
 
 
@@ -55,5 +55,5 @@ describe("Operation: short by ",function() {
         for(var i= 0 ; i< length; i++) {
             expect(sorted[i].equals(ExpectedData.OPERATION_DATA.SORT_DATA[i])).toBe(true);
         }
-    })
+    });
 });

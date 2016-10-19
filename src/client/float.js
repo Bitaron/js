@@ -22,6 +22,7 @@ Float.parseNumber = function(decimalNumber) {
     }
 
     var exponent = 0;
+    var float;
     var significand = decimalNumber;
     if(isExponentMinus){
         while(1) {
@@ -30,7 +31,7 @@ Float.parseNumber = function(decimalNumber) {
             if(significand<1){
                 significand = significand * Float.BASE;
                 exponent--;
-                var float = Float.parse(significand,exponent);
+                float = Float.parse(significand,exponent);
                 return float;
             }
         }
@@ -41,7 +42,7 @@ Float.parseNumber = function(decimalNumber) {
             if (significand > 1) {
                 exponent = -exponent;
                 significand = +significand.toFixed(3);
-                var float = Float.parse(significand,exponent);
+                float = Float.parse(significand,exponent);
                 return float;
             }
         }
@@ -85,7 +86,7 @@ Float.insertionSort = function(unsortedArray, comparisonFunction) {
 
     for(var i = 0; i<unsortedArray.length; i++) {
         for(var j = i+1; j<unsortedArray.length; j++) {
-            var isSmaller = comparisonFunction(unsortedArray[i],unsortedArray[j]) != -1;
+            var isSmaller = comparisonFunction(unsortedArray[i],unsortedArray[j]) !== -1;
             if(isSmaller) {
                 var temp = unsortedArray[i];
                 unsortedArray[i] = unsortedArray[j];
@@ -95,6 +96,6 @@ Float.insertionSort = function(unsortedArray, comparisonFunction) {
     }
     sortedArray = unsortedArray;
     return sortedArray;
-}
+};
 
 module.exports = Float;

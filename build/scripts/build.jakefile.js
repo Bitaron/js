@@ -62,7 +62,7 @@
         process.stdout.write("Linting client ..");
         jshint.checkFiles(
             {
-                files : ["src/*.js"],
+                files : ["src/**/*.js"],
                 options : jshintConfig.clientOptions,
                 globals : jshintConfig.clientGlobals
             },complete,fail);

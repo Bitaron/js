@@ -1,3 +1,4 @@
+'use strict';
 
 var app = require("../app.js");
 var constant = require("../constants.js");

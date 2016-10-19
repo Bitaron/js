@@ -41,11 +41,16 @@
         task: false,
         directory: false,
         complete: false,
-        fail: false
+        fail: false,
     });
 
     exports.clientGlobals = merge(universalGlobals, {
-
+        //Immutable js
+        Immutable: false,
+        //Jasmine
+        describe: false,
+        it: false,
+        expect: false
     });
 
 }());
