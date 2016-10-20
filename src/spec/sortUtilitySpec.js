@@ -11,7 +11,7 @@ describe('SORT UTILITY TESTS ', function() {
             jasmine.addMatchers(customMatchers);
         });
         it('insertion sort', function() {
-            matcher(SortUtility.insertionSort);
+       //     matcher(SortUtility.insertionSort);
         });
 
         it('' +
@@ -32,8 +32,8 @@ var customMatchers = {
                     result.message = expected.toString().toUpperCase() + ': test passed';;
                 } else {
                     result.message =  expected.toString().toUpperCase() +
-                        ": Expected [" +
-                        actual + "] to be equal [" + dataObject[expected].s + ']';
+                        ": Expected to sort [" + "] but found [" +
+                        actual + "] . Ans: [" + dataObject[expected].s + ']';
                 }
                 return result;
             }
@@ -45,7 +45,8 @@ var matcher = function(sortFunction) {
     var compareFunction = SortEnvironment.compare;
     for(var property in dataObject){
        // console.log('\t' + property.toString());
-        var sortedArray = sort(sortFunction,dataObject[property].u, compareFunction);
+        var unsortedArray = dataObject[property].u;
+        var sortedArray = sort(sortFunction,unsortedArray, compareFunction);
         match(sortedArray,property);
     }
 };
