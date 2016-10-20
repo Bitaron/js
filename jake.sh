@@ -4,7 +4,7 @@
 
  if [ "$1" = "ctr" ]; then
  echo "Running continuous test"
- watch -c  -n1  ./node_modules/.bin/jake -f build/scripts/build.jakefile.js simpleTest --color
+ watch -c -d  -n1  ./node_modules/.bin/jake -f build/scripts/build.jakefile.js simpleTest --color  --differences
  else
  echo "Running jake"
  ./node_modules/.bin/jake -f build/scripts/build.jakefile.js $*

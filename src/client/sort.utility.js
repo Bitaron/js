@@ -21,4 +21,8 @@ SortUtility.insertionSort = function(unsortedArray, compareFunction) {
     return sortedArray;
 };
 
+SortUtility.quickSort = function(unsortedArray, compareFunction) {
+
+};
+
 module.exports = SortUtility;
