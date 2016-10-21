@@ -22,7 +22,6 @@ SortUtility.insertionSort = function(unsortedArray, compareFunction) {
 };
 
 SortUtility.quickSort = function(unsortedArray, compareFunction) {
-
     return partition(unsortedArray,compareFunction,0, unsortedArray.length-1,'main');
 
 
@@ -45,11 +44,9 @@ var partition = function(unsortedArray,compareFunction,startingIndex, endingInde
             }
         }
     }
-
     unsortedArray = swap(unsortedArray,startingIndex,leftMarker);
     partition(unsortedArray,compareFunction,startingIndex, (leftMarker-1),'left');
     partition(unsortedArray,compareFunction,++leftMarker,endingIndex,'right');
-
     return unsortedArray;
 };
 

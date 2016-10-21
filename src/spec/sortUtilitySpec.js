@@ -3,7 +3,7 @@
 var SortEnvironment = require('./data/sort.utility.environment');
 var SortUtility = require('../client/sort.utility');
 
-var dataObject = SortEnvironment.data;
+
 
 describe('SORT UTILITY TESTS ', function() {
     describe('sort utility can use ', function() {
@@ -11,7 +11,7 @@ describe('SORT UTILITY TESTS ', function() {
             jasmine.addMatchers(customMatchers);
         });
         it('insertion sort', function() {
-       //     matcher(SortUtility.insertionSort);
+           matcher(SortUtility.insertionSort);
         });
 
         it('' +
@@ -32,7 +32,7 @@ var customMatchers = {
                     result.message = expected.toString().toUpperCase() + ': test passed';;
                 } else {
                     result.message =  expected.toString().toUpperCase() +
-                        ": Expected to sort [" + "] but found [" +
+                        ": Expected to sort [" + dataObject[expected].u + "] but found [" +
                         actual + "] . Ans: [" + dataObject[expected].s + ']';
                 }
                 return result;
@@ -41,11 +41,15 @@ var customMatchers = {
     }
 };
 
+var dataObject;
+
 var matcher = function(sortFunction) {
-    var compareFunction = SortEnvironment.compare;
+    var environment = new SortEnvironment();
+    dataObject = environment.data;
+    var compareFunction = environment.compare;
     for(var property in dataObject){
        // console.log('\t' + property.toString());
-        var unsortedArray = dataObject[property].u;
+        var unsortedArray = dataObject[property].u.slice();
         var sortedArray = sort(sortFunction,unsortedArray, compareFunction);
         match(sortedArray,property);
     }
