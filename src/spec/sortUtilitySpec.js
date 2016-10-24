@@ -21,6 +21,10 @@ describe('SORT UTILITY ACCEPTENCE TESTS ', function() {
         it('merge sort', function() {
             matcher(SortUtility.mergeSort);
         });
+
+        it('heap sort', function() {
+            matcher(SortUtility.heapSort);
+        });
     });
 });
 
@@ -37,6 +41,23 @@ describe('Merge sort unit test ', function() {
 
     });
 });
+
+describe('Heap sort unit test ', function() {
+
+    it('given an array maintain the max heap property', function() {
+        var dataObject = environment.heapData;
+        for(var property in dataObject){
+            if (dataObject.hasOwnProperty(property)) {
+                var newArray =
+                    SortUtility.maxHeapify(dataObject[property].a, 0,
+                        (dataObject[property].a.length-1), environment.compare);
+                expect(newArray).toEqual(dataObject[property].b);
+            }
+        }
+
+    });
+});
+
 
 var customMatchers = {
     toBeEqualSortedArray: function (util) {

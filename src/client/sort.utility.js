@@ -96,4 +96,65 @@ SortUtility.merge = function(first, second) {
     return newSortedArray;
 };
 
+SortUtility.heapSort = function(unsortedArray, compareFunction) {
+    var heapLength = unsortedArray.length - 1;
+    var array = unsortedArray;
+    while(heapLength != 0) {
+        array = SortUtility.maxHeapify(unsortedArray, 0, heapLength, compareFunction );
+        array = swap(array,0, heapLength);
+        heapLength--;
+    }
+    
+    return array;
+};
+
+SortUtility.maxHeapify = function(array, startIndex, endIndex,compareFunction) {
+    var indx = Math.floor((endIndex -  startIndex)/2);
+
+    while(indx >= startIndex) {
+        array = maintainHeap(array,indx, endIndex,compareFunction);
+        indx--;
+
+    }
+    return array;
+};
+
+var maintainHeap = function(array, startIndx, endIndex, compareFunction) {
+    var swapIndex = startIndx;
+
+    while(swapIndex <= endIndex) {
+        if(leftChild(startIndx) <= endIndex &&
+            compareFunction(array[startIndx] ,array[leftChild(startIndx)]) == -1) {
+            swapIndex = leftChild(startIndx);
+        }
+
+        if(rightChild(startIndx) <= endIndex &&
+            compareFunction(array[swapIndex] , array[rightChild(startIndx)]) === -1) {
+            swapIndex = rightChild(startIndx);
+        }
+
+        if(swapIndex != startIndx) {
+            array = swap(array,startIndx,swapIndex);
+            startIndx = swapIndex;
+        }else{
+            return array;
+        }
+
+    }
+    return array;
+}
+
+var parent = function(indx) {
+    return Math.floor(indx/2);
+}
+
+var leftChild = function(indx) {
+    return indx*2 + 1;
+};
+
+var rightChild = function(indx) {
+    return indx*2 + 2;
+};
+
+
 module.exports = SortUtility;

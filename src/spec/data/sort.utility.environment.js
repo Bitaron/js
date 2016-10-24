@@ -52,6 +52,14 @@ var Environment = function() {
         }
     };
 
+    this.heapData = {
+        simple: {
+            a: [4, 1, 3, 2, 16, 9, 10, 14, 8, 7],
+            b: [16, 14, 10, 8, 7, 9, 3, 2, 4, 1]
+        }
+    }
+
+
 };
 
 module.exports = Environment;
