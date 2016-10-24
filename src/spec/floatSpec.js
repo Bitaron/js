@@ -3,7 +3,7 @@
 var Float = require('../client/float');
 var TestData = require('../spec/data/test.data');
 var ExpectedData = require('./data/expected.data');
-
+/*
 describe('FLOAT PACKAGE TESTS ',function() {
 
     describe("Create float using ", function() {
@@ -72,3 +72,4 @@ describe('FLOAT PACKAGE TESTS ',function() {
 
 });
 
+*/

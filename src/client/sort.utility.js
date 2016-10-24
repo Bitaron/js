@@ -57,5 +57,45 @@ var swap = function(array, first, second) {
     return array;
 };
 
+SortUtility.mergeSort = function(unsortedArray, compareFunction) {
+    var left = SortUtility.divideAndMerge(unsortedArray.slice(0, unsortedArray.length/2),compareFunction);
+    var right = SortUtility.divideAndMerge(unsortedArray.slice(unsortedArray.length/2), compareFunction);
+
+    var sortedArray = SortUtility.merge(left,right);
+    return sortedArray;
+
+};
+
+SortUtility.divideAndMerge = function(unsortedArray, compareFunction) {
+    if(unsortedArray.length == 1) {
+        return unsortedArray;
+    }
+    var left =
+        SortUtility.divideAndMerge(unsortedArray.slice(0, unsortedArray.length/2),compareFunction);
+    var right =
+        SortUtility.divideAndMerge(unsortedArray.slice(unsortedArray.length/2), compareFunction);
+
+    var sortedArray = SortUtility.merge(left,right);
+    return sortedArray;
+};
+
+SortUtility.merge = function(first, second) {
+    var firstLength = first.length;
+    var secondLength = second.length;
+    var leftArrayInd = 0;
+    var rightArrayInd = 0;
+    var newSortedArray = [];
+    for(var i= 0; i< (firstLength+secondLength); i++ ) {
+        if(rightArrayInd >= secondLength || first[leftArrayInd] <= second[rightArrayInd]) {
+            newSortedArray.push(first[leftArrayInd]);
+            leftArrayInd++;
+        }else if(leftArrayInd >= firstLength || second[rightArrayInd] <= first[leftArrayInd]) {
+            newSortedArray.push(second[rightArrayInd]);
+            rightArrayInd++;
+        }
+    }
+
+    return newSortedArray;
+};
 
 module.exports = SortUtility;
