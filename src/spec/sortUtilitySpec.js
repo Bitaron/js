@@ -20,7 +20,7 @@ describe('SORT UTILITY ACCEPTENCE TESTS ', function() {
 
         it('merge sort', function() {
             matcher(SortUtility.mergeSort);
-        })
+        });
     });
 });
 
@@ -29,11 +29,13 @@ describe('Merge sort unit test ', function() {
     it('given two sorted array sorts them in a single array', function() {
         var dataObject = environment.mergeData;
         for(var property in dataObject){
-            var newArray = SortUtility.merge(dataObject[property].a, dataObject[property].b);
-            expect(newArray).toEqual(dataObject[property].c);
+            if (dataObject.hasOwnProperty(property)) {
+                var newArray = SortUtility.merge(dataObject[property].a, dataObject[property].b);
+                expect(newArray).toEqual(dataObject[property].c);
+            }
         }
 
-    })
+    });
 });
 
 var customMatchers = {
@@ -44,7 +46,7 @@ var customMatchers = {
                 var result = {};
                 result.pass = util.equals(actual, dataObject[expected].s);
                 if(result.pass) {
-                    result.message = expected.toString().toUpperCase() + ': test passed';;
+                    result.message = expected.toString().toUpperCase() + ': test passed';
                 } else {
                     result.message =  expected.toString().toUpperCase() +
                         ": Expected to sort [" + dataObject[expected].u + "] but found [" +
@@ -52,7 +54,7 @@ var customMatchers = {
                 }
                 return result;
             }
-        }
+        };
     }
 };
 
@@ -63,10 +65,12 @@ var matcher = function(sortFunction) {
     dataObject = environment.data;
     var compareFunction = environment.compare;
     for(var property in dataObject){
-       // console.log('\t' + property.toString());
-        var unsortedArray = dataObject[property].u.slice();
-        var sortedArray = sort(sortFunction,unsortedArray, compareFunction);
-        match(sortedArray,property);
+        if (dataObject.hasOwnProperty(property)) {
+            // console.log('\t' + property.toString());
+            var unsortedArray = dataObject[property].u.slice();
+            var sortedArray = sort(sortFunction,unsortedArray, compareFunction);
+            match(sortedArray,property);
+        }
     }
 };
 

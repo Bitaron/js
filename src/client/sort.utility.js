@@ -5,8 +5,6 @@ var SortUtility = function() {
 };
 
 SortUtility.insertionSort = function(unsortedArray, compareFunction) {
-    var sortedArray = [];
-
     for(var i = 0; i<unsortedArray.length; i++) {
         for(var j = i+1; j<unsortedArray.length; j++) {
             var isSmaller = compareFunction(unsortedArray[i],unsortedArray[j]) !== -1;
@@ -17,7 +15,7 @@ SortUtility.insertionSort = function(unsortedArray, compareFunction) {
             }
         }
     }
-    sortedArray = unsortedArray;
+    var sortedArray = unsortedArray;
     return sortedArray;
 };
 
@@ -35,11 +33,11 @@ var partition = function(unsortedArray,compareFunction,startingIndex, endingInde
     var leftMarker = startingIndex;
     var rightMarker = endingIndex;
     while( leftMarker < rightMarker) {
-        if(compareFunction(unsortedArray[rightMarker], pivot) == 1) {
+        if(compareFunction(unsortedArray[rightMarker], pivot) === 1) {
             rightMarker--;
         }else {
             leftMarker++;
-            if (compareFunction(unsortedArray[leftMarker], pivot) == 1) {
+            if (compareFunction(unsortedArray[leftMarker], pivot) === 1) {
                 unsortedArray = swap(unsortedArray, leftMarker, rightMarker);
             }
         }
@@ -67,7 +65,7 @@ SortUtility.mergeSort = function(unsortedArray, compareFunction) {
 };
 
 SortUtility.divideAndMerge = function(unsortedArray, compareFunction) {
-    if(unsortedArray.length == 1) {
+    if(unsortedArray.length === 1) {
         return unsortedArray;
     }
     var left =

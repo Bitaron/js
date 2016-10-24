@@ -48,6 +48,8 @@
         //Immutable js
         Immutable: false,
         //Jasmine
+        jasmine: false,
+        beforeEach: false,
         describe: false,
         it: false,
         expect: false

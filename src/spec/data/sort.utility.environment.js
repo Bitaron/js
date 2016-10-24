@@ -50,7 +50,7 @@ var Environment = function() {
             b : [2],
             c : [1, 2]
         }
-    }
+    };
 
 };
 
