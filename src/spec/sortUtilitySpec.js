@@ -25,6 +25,10 @@ describe('SORT UTILITY ACCEPTENCE TESTS ', function() {
         it('heap sort', function() {
             matcher(SortUtility.heapSort);
         });
+
+        it('counting sort', function() {
+            matcher(SortUtility.countingSort);
+        });
     });
 });
 
@@ -32,7 +36,7 @@ describe('Merge sort unit test ', function() {
 
     it('given two sorted array sorts them in a single array', function() {
         var dataObject = environment.mergeData;
-        for(var property in dataObject){
+        for(var property in dataObject) {
             if (dataObject.hasOwnProperty(property)) {
                 var newArray = SortUtility.merge(dataObject[property].a, dataObject[property].b);
                 expect(newArray).toEqual(dataObject[property].c);
@@ -46,7 +50,7 @@ describe('Heap sort unit test ', function() {
 
     it('given an array maintain the max heap property', function() {
         var dataObject = environment.heapData;
-        for(var property in dataObject){
+        for(var property in dataObject) {
             if (dataObject.hasOwnProperty(property)) {
                 var newArray =
                     SortUtility.maxHeapify(dataObject[property].a, 0,
@@ -58,6 +62,18 @@ describe('Heap sort unit test ', function() {
     });
 });
 
+describe('Counting sort unit test ', function() {
+
+    it('given an array counts the number of occurrences of the element', function() {
+        var dataObject = environment.countingData;
+        for(var property in dataObject) {
+            var countedArray =
+                SortUtility.countElement(dataObject[property].a);
+            expect(countedArray).toEqual(dataObject[property].b);
+        }
+
+    });
+});
 
 var customMatchers = {
     toBeEqualSortedArray: function (util) {

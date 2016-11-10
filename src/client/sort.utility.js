@@ -104,7 +104,7 @@ SortUtility.heapSort = function(unsortedArray, compareFunction) {
         array = swap(array,0, heapLength);
         heapLength--;
     }
-    
+
     return array;
 };
 
@@ -157,4 +157,33 @@ var rightChild = function(indx) {
 };
 
 
+SortUtility.countingSort = function(unsortedArray, compareFunction) {
+    var countingArray = SortUtility.countElement(unsortedArray);
+
+    for(var i=1 ; i< countingArray.length; i++) {
+        countingArray[i] = countingArray[i] + countingArray[i-1];
+    }
+    var sortedArray = new Array(unsortedArray.length);
+    for(var i=0 ; i<unsortedArray.length; i++) {
+        sortedArray[(countingArray[unsortedArray[i]]-1)] = unsortedArray[i];
+        countingArray[unsortedArray[i]]--;
+    }
+    return sortedArray;
+}
+
+SortUtility.countElement = function(array) {
+    var max = -100000;
+    for(var i = 0 ; i<array.length; i++) {
+        if(array[i] > max) {
+            max = array[i];
+        }
+    }
+
+    var countArray = new Array(max+2).join('0').split('').map(parseFloat);
+    for(var i = 0 ; i<array.length; i++) {
+      countArray[array[i]]++;
+    }
+
+    return countArray;
+};
 module.exports = SortUtility;
