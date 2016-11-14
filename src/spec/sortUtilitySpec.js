@@ -75,6 +75,13 @@ describe('Counting sort unit test ', function() {
     });
 });
 
+describe('Bucket sort unit test ', function() {
+    it('give an decimal array it sorts it in proper buckets', function() {
+        var bucketArray = SortUtility.createBucket(environment.bucketData.simple.a);
+        expect(bucketArray).toEqual(environment.bucketData.simple.b);
+    })
+});
+
 var customMatchers = {
     toBeEqualSortedArray: function (util) {
         return {

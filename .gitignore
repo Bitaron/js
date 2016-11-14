@@ -1,4 +1,6 @@
-.idea/workspace.xml
+.idea
 reactWeatherApp/
 .bin
 generated/
+/js/nbproject/private/
+/nbproject

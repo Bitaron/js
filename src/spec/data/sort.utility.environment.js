@@ -66,6 +66,12 @@ var Environment = function() {
         }
     };
 
+    this.bucketData = {
+        simple: {
+            a: [1.2, 1.9, 2, 2.4, 3, 3.5, 4, 4.5, 4.9],
+            b: [[], [1.2, 1.9], [2, 2.4], [3, 3.5], [4, 4.5, 4.9]]
+        }
+    }
 };
 
 module.exports = Environment;

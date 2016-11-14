@@ -186,4 +186,9 @@ SortUtility.countElement = function(array) {
 
     return countArray;
 };
+
+SortUtility.createBucket = function(array) {
+
+};
+
 module.exports = SortUtility;
