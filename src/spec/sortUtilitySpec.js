@@ -29,6 +29,10 @@ describe('SORT UTILITY ACCEPTENCE TESTS ', function() {
         it('counting sort', function() {
 //            matcher(SortUtility.countingSort);
         });
+        
+        it('bucket sort', function() {
+            matcher_n(SortUtility.bucketSort, environment.bucketData);
+        });
     });
 });
 
@@ -77,7 +81,7 @@ describe('Counting sort unit test ', function() {
 
 describe('Bucket sort unit test ', function() {
     it('give an decimal array it sorts it in proper buckets', function() {
-        var bucketArray = SortUtility.createBucket(environment.bucketData.simple.a);
+        var bucketArray = SortUtility.createBucket(environment.bucketData.simple.u);
         expect(bucketArray).toEqual(environment.bucketData.simple.b);
     })
 });
@@ -111,6 +115,18 @@ var matcher = function(sortFunction) {
     for(var property in dataObject){
         if (dataObject.hasOwnProperty(property)) {
             // console.log('\t' + property.toString());
+            var unsortedArray = dataObject[property].u.slice();
+            var sortedArray = sort(sortFunction,unsortedArray, compareFunction);
+            match(sortedArray,property);
+        }
+    }
+};
+
+var matcher_n = function(sortFunction, inputData) {
+    dataObject = inputData;
+    var compareFunction = environment.compare;
+    for(var property in dataObject){
+        if (dataObject.hasOwnProperty(property)) {
             var unsortedArray = dataObject[property].u.slice();
             var sortedArray = sort(sortFunction,unsortedArray, compareFunction);
             match(sortedArray,property);
