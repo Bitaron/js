@@ -188,7 +188,23 @@ SortUtility.countElement = function(array) {
 };
 
 SortUtility.createBucket = function(array) {
-
+    var bucketArray = new Array();
+    var maxElement = -999;
+    for(var i = 0; i<array.length; i++) {
+        if(array[i] > maxElement) {
+            maxElement = array[i];
+        }
+    }
+    
+    for(var i = 0; i<= Math.floor(maxElement); i++) {
+        bucketArray[i] = new Array();
+    }
+    
+    for(var i=0; i<array.length; i++) {
+        var index = Math.floor(array[i]%10);
+        bucketArray[index].push(array[i]);
+    }
+    return bucketArray;
 };
 
 module.exports = SortUtility;
