@@ -1,4 +1,4 @@
-"use strict";
+/*"use strict";
 
 var SortEnvironment = require('./data/sort.utility.environment');
 var SortUtility = require('../client/sort.utility');
@@ -145,3 +145,4 @@ var match = function(testResult,dataProperty) {
 
 
 
+*/
