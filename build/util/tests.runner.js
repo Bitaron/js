@@ -27,5 +27,6 @@
                 process.exit(failures);  // exit with non-zero status if there were failures
             });
         });
+        return success();
     }
 }());

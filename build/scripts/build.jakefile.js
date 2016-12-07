@@ -35,7 +35,8 @@
     task('lintBuild', function () {
         console.log('Linting build ..');
         linter.lint({
-            src: 'build'
+            config : Paths.EsLint.Config,
+            srcDir : Paths.EsLint.BuildSource
         }, complete, fail);
     }, {async: true});
 
@@ -43,7 +44,8 @@
     task('lintClient', function () {
         console.log('Linting client ..');
         linter.lint({
-            src: 'client'
+            config : Paths.EsLint.Config,
+            srcDir : Paths.EsLint.ClientSource
         }, complete, fail);
     }, {async : true});
 
