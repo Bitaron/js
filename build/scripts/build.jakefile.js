@@ -8,7 +8,7 @@
 
     desc('run complete cycle');
     var startTime = Date.now();
-    task('default', ['version', 'lint', 'tests'], function () {
+    task('default', ['version', 'lint', 'tests', 'build'], function () {
         var elapsedSeconds = (Date.now() - startTime) / 1000;
         console.log("\n\nBuild ok (" + elapsedSeconds.toFixed(2) + "s)");
     });
@@ -60,5 +60,10 @@
             testDir : Paths.Tests.TestSource
         }, complete, fail);
     }, {async : true});
-
+    
+    //** Build runner **//
+    desc('run build');
+    task('build', function() {
+        console.log('This will run build');
+    })
 }());
