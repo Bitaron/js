@@ -11,6 +11,10 @@ module.exports = {
         Config: './build/config/eslint.config.js',
         BuildSource: ['./' + Common.BuildSource],
         ClientSource: ['../../' + Common.ClientSource]
+    },
+    
+    Tests: {
+        TestSource : Common.ClientSource + 'tests/'
     }
 
 

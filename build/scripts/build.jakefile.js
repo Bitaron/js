@@ -1,9 +1,10 @@
 (function () {
     'use strict';
-
+    var Paths = require('../util/paths');
+    
     var versionChecker = require('../util/version_checker');
     var linter = require('../util/linter');
-
+    var testRunner = require('../util/tests.runner');
 
     desc('run complete cycle');
     var startTime = Date.now();
@@ -44,7 +45,7 @@
         linter.lint({
             src: 'client'
         }, complete, fail);
-    });
+    }, {async : true});
 
     //** TEST RUNNER **//
     desc('run tests');
@@ -53,32 +54,9 @@
     desc('run unit test suits')
     task('unitTests', function () {
         console.log('Running unit tests ..');
-        var Mocha = require('mocha'),
-                fs = require('fs'),
-                path = require('path');
-
-// Instantiate a Mocha instance.
-        var mocha = new Mocha();
-
-        var testDir = 'some/dir/test'
-
-// Add each .js file to the mocha instance
-        fs.readdirSync(testDir).filter(function (file) {
-            // Only keep the .js files
-            return file.substr(-3) === '.js';
-
-        }).forEach(function (file) {
-            mocha.addFile(
-                    path.join(testDir, file)
-                    );
-        });
-
-// Run the tests.
-        mocha.run(function (failures) {
-            process.on('exit', function () {
-                process.exit(failures);  // exit with non-zero status if there were failures
-            });
-        });
-    })
+        testRunner.run({
+            testDir : Paths.Tests.TestSource
+        }, complete, fail);
+    }, {async : true});
 
 }());
