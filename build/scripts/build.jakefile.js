@@ -3,16 +3,17 @@
 
     var versionChecker = require('../util/version_checker');
     var linter = require('../util/linter');
-    
 
-    desc('This is the default task.');
+
+    desc('run complete cycle');
     var startTime = Date.now();
-    task('default', ['version', 'lint'], function () {
+    task('default', ['version', 'lint', 'tests'], function () {
         var elapsedSeconds = (Date.now() - startTime) / 1000;
         console.log("\n\nBuild ok (" + elapsedSeconds.toFixed(2) + "s)");
     });
 
-    desc('This checks node.js version');
+        //** NODE VERSION CHECK **//
+    desc('checks node.js version');
     task('version', function () {
         console.log('Checking nodejs version ..');
         versionChecker.check({
@@ -23,23 +24,35 @@
         }, complete, fail);
     }, {async: true});
 
-    desc('This lint the code base');
+                
+        //** LINT **//
+    desc('lint complete source');
     task('lint', ['lintBuild', 'lintClient']);
 
-    desc('This lint build section');
+    
+    desc('lint build source');
     task('lintBuild', function () {
         console.log('Linting build ..');
         linter.lint({
-            src : 'build'
+            src: 'build'
         }, complete, fail);
     }, {async: true});
 
-    desc('This lint client section');
+    desc('lint client source');
     task('lintClient', function () {
         console.log('Linting client ..');
         linter.lint({
-            src : 'client'
+            src: 'client'
         }, complete, fail);
+    });
+
+            //** TEST RUNNER **//
+    desc('run tests');
+    task('tests', ['unitTests']);
+    
+    desc('run unit test suits')
+    task('unitTests', function() {
+        console.log('Running unit tests ..');
     })
 
 }());
