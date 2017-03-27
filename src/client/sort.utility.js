@@ -95,7 +95,7 @@ SortUtility.merge = function (first, second) {
 SortUtility.heapSort = function (unsortedArray, compareFunction) {
     var heapLength = unsortedArray.length - 1;
     var array = unsortedArray;
-    while (heapLength != 0) {
+    while (heapLength !== 0) {
         array = SortUtility.maxHeapify(unsortedArray, 0, heapLength, compareFunction);
         array = swap(array, 0, heapLength);
         heapLength--;
@@ -120,7 +120,7 @@ var maintainHeap = function (array, startIndx, endIndex, compareFunction) {
 
     while (swapIndex <= endIndex) {
         if (leftChild(startIndx) <= endIndex &&
-                compareFunction(array[startIndx], array[leftChild(startIndx)]) == -1) {
+                compareFunction(array[startIndx], array[leftChild(startIndx)]) === -1) {
             swapIndex = leftChild(startIndx);
         }
 
@@ -129,7 +129,7 @@ var maintainHeap = function (array, startIndx, endIndex, compareFunction) {
             swapIndex = rightChild(startIndx);
         }
 
-        if (swapIndex != startIndx) {
+        if (swapIndex !== startIndx) {
             array = swap(array, startIndx, swapIndex);
             startIndx = swapIndex;
         } else {
@@ -138,11 +138,11 @@ var maintainHeap = function (array, startIndx, endIndex, compareFunction) {
 
     }
     return array;
-}
+};
 
 var parent = function (indx) {
     return Math.floor(indx / 2);
-}
+};
 
 var leftChild = function (indx) {
     return indx * 2 + 1;
@@ -160,12 +160,12 @@ SortUtility.countingSort = function (unsortedArray, compareFunction) {
         countingArray[i] = countingArray[i] + countingArray[i - 1];
     }
     var sortedArray = new Array(unsortedArray.length);
-    for (var i = 0; i < unsortedArray.length; i++) {
-        sortedArray[(countingArray[unsortedArray[i]] - 1)] = unsortedArray[i];
-        countingArray[unsortedArray[i]]--;
+    for (var j = 0; j < unsortedArray.length; j++) {
+        sortedArray[(countingArray[unsortedArray[j]] - 1)] = unsortedArray[j];
+        countingArray[unsortedArray[j]]--;
     }
     return sortedArray;
-}
+};
 
 SortUtility.countElement = function (array) {
     var max = -100000;
@@ -176,8 +176,8 @@ SortUtility.countElement = function (array) {
     }
 
     var countArray = new Array(max + 2).join('0').split('').map(parseFloat);
-    for (var i = 0; i < array.length; i++) {
-        countArray[array[i]]++;
+    for (var j = 0; j < array.length; j++) {
+        countArray[array[j]]++;
     }
 
     return countArray;
@@ -185,25 +185,25 @@ SortUtility.countElement = function (array) {
 
 SortUtility.bucketSort = function (unsortedArray, compareFunction) {
     var bucketArray = SortUtility.createBucket(unsortedArray);
-    var sortedArray = new Array();
+    var sortedArray = [];
     for (var i = 0; i < bucketArray.length; i++) {
         if (bucketArray[i].length !== 0) {
             bucketArray[i] = SortUtility.insertionSort(bucketArray[i], compareFunction);
         }
     }
 
-    for (var i = 0; i < bucketArray.length; i++) {
-        for (var j = 0; j < bucketArray[i].length; j++) {
-            sortedArray.push(bucketArray[i][j]);
+    for (var j = 0; j < bucketArray.length; j++) {
+        for (var k = 0; k < bucketArray[j].length; k++) {
+            sortedArray.push(bucketArray[j][k]);
         }
 
     }
     return sortedArray;
 
-}
+};
 
 SortUtility.createBucket = function (array) {
-    var bucketArray = new Array();
+    var bucketArray = [];
     var maxElement = -999;
     for (var i = 0; i < array.length; i++) {
         if (array[i] > maxElement) {
@@ -211,13 +211,13 @@ SortUtility.createBucket = function (array) {
         }
     }
 
-    for (var i = 0; i <= Math.floor(maxElement); i++) {
-        bucketArray[i] = new Array();
+    for (var j = 0; j <= Math.floor(maxElement); j++) {
+        bucketArray[j] = [];
     }
 
-    for (var i = 0; i < array.length; i++) {
-        var index = Math.floor(array[i] % 10);
-        bucketArray[index].push(array[i]);
+    for (var k = 0; k < array.length; k++) {
+        var index = Math.floor(array[k] % 10);
+        bucketArray[index].push(array[k]);
     }
     return bucketArray;
 };

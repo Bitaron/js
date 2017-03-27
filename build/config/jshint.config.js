@@ -7,7 +7,7 @@
         bitwise: true,
         curly: false,
         eqeqeq: true,
-        forin: true,
+        forin: false,
         immed: true,
         latedef: false,
         newcap: true,

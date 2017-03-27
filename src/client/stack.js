@@ -8,5 +8,5 @@ Stack.mergeString = function(a, b) {
     var len2 = b.length;
     
     
-}
+};
 module.exports = Stack;

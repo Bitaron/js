@@ -72,7 +72,7 @@ var Environment = function() {
             b: [[], [1.2, 1.9], [2, 2.4], [3, 3.5], [4, 4.5, 4.9]],
             s: [1.2, 1.9, 2, 2.4, 3, 3.5, 4, 4.5, 4.9],
         }
-    }
+    };
 };
 
 module.exports = Environment;
