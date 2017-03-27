@@ -17,6 +17,7 @@
 
     //**DEFAULT
 
+
     desc("Lint and Test");
     var startTime = Date.now();
     task("default",["version","lint","test","build"],function(){
