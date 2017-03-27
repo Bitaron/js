@@ -19,7 +19,7 @@
 
     desc("Lint and Test");
     var startTime = Date.now();
-    task("default",["version","lint","test","build"],function(){
+    task("default",["version","lint","unitTest"],function(){
         var elapsedSeconds = (Date.now() - startTime)/1000;
         console.log("\n\nBuild ok ("+ elapsedSeconds.toFixed(2) + "s)");
     });
@@ -73,10 +73,10 @@
     //**TEST
 
     desc("Full Test");
-    task("test",["simpleTest","crossBrowserTest"]);
+    task("test",["unitTest","crossBrowserTest"]);
 
     desc("Test on cmd");
-    task("simpleTest",function(){
+    task("unitTest",function(){
         process.stdout.write("Testing on cmd ..");
         jasmineTestRunner.run(jasmineConfig,complete,fail);
     },{async : true});
